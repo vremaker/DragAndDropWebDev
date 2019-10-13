@@ -1,17 +1,71 @@
 <!DOCTYPE html>
 <html>
 
+<div class="wrapper">
+
 <head>
   <meta charset="utf-8">
+  <h1>Scratch</h1>
+
   <title></title>
-  <link href="index.css" rel="stylesheet">
+  <link href="index.css" rel="stylesheet"/>
   <script src="index.js"></script>
 </head>
-<body>
-  <div id="tools">
 
+</div>
+
+<body>
+<script src="html_file_handler.js">
+  function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+} 
+
+function drop(ev) {
+
+  ev.preventDefault();
+    if(ev.target.classList.contains("no")){
+
+    }
+    else{
+  var data = ev.dataTransfer.getData("text");
+    if(ev.target.appendChild(document.getElementById(data))){
+       var itm = document.getElementById(data);
+    var cln = itm.cloneNode(true);
+    document.getElementById("div1").appendChild(cln);
+  }
+    }
+}
+  </script>
+  <a href="show.html" target="_blank">view my project </a>
+  <div id="tools">
+      <div id="div1" draggable="false">
+          <div draggable="true" ondragstart="drag(event)" class="no" id="drag1">
+            <span><h1> H1 </h1>
+            <input placeholder="your text"/>
+          </div>
+
+          <div draggable="true" ondragstart="drag(event)" class="no" id="drag2">
+              <span>
+              <h1> H2 </h1>
+              <input placeholder="your text"/>
+              </span>
+          </div>
+
+        <div draggable="true" ondragstart="drag(event)" id="drag3">
+           <span> <h1> H3 </h1>
+            <input placeholder="your text"/>
+            </span>
+          </div>
+      </div>
   </div>
-  <div id="board"></div>
+  <div id="board" draggable="false" ondrop="drop(event)" ondragover="allowDrop(event)">
+  </div>
 </body>
 
 </html>
+
+
