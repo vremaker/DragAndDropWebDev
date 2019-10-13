@@ -12,11 +12,15 @@ function deleteFile(input_array, file_name){
 
 }
 
-var elem1, elem2;
-
 function writeHTML(input_array, out_file_name){
-  arr_len = input_array.length
-  var i;
+  var text = "<body>";
+
+  for(int i = 0; i < input_array.length; i++){
+		if(input_array[i].tagName == "UL" && input_array[i].tagName == "OL"){
+
+    }
+  }
+
 
 
 
@@ -28,7 +32,16 @@ function writeHTML(input_array, out_file_name){
   if(window.navigator.msSaveOrOpenBlob)
   	window.navigator.msSaveOrOpenBlob(file, file_name);
   else{
-
+    var a = document.createElement("a"),
+        url = URL.createObjectURL(file);
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function(){
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(url);
+    }, 0);
   }
 }
 
