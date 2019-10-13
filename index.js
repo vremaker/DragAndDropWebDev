@@ -1,3 +1,4 @@
+//Connor Shabro, Valerie Remaker, Padma Gundapaneni
 (function () {
 
     window.addEventListener("load", init);
@@ -6,7 +7,7 @@
       id("show").addEventListener("click", readDom);
       //fillHTML();
     // fillBoard();
-      
+
     }
 
     function readDom() {

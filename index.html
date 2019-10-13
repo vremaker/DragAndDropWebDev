@@ -1,3 +1,4 @@
+<!--Connor Shabro, Valerie Remaker, Padma Gundapaneni-->
 <!DOCTYPE html>
 <html>
 
@@ -23,7 +24,7 @@
 
 function drag(ev) {
         ev.dataTransfer.setData("text", ev.target.id);
-} 
+}
 
 function drop(ev) {
 
@@ -50,7 +51,7 @@ function drop(ev) {
             <input placeholder="your text"/>
           </div>
           <div draggable="true" ondragstart="drag(event)" class="no" id="h2">
-             
+
               <h1> H2 </h1>
               <input placeholder="your text"/>
             </div>
@@ -79,14 +80,12 @@ function drop(ev) {
           <input placeholder="your text"/>
         </div>
       </div>
-    </div> 
+    </div>
   <div id="board" draggable="false" ondrop="drop(event)" ondragover="allowDrop(event)">
   </div>
   </div>
-  
+
 
 </body>
 
 </html>
-
-
