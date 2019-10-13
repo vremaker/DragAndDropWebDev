@@ -17,10 +17,8 @@ body {
   box-sizing: border-box;
 }
 
-#h1 {
-  border: 10px solid black;
-  width: 80%;
-
+h2{
+  padding: 20px 0;
 }
 
 #droppy {
@@ -41,6 +39,15 @@ body {
   background-color: pink;
   height: 900px;
   width: 750px;
-  float: left;
+}
 
+#flexy {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-content: center;
+}
+
+h2{
+  text-align: center;
 }

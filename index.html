@@ -5,9 +5,10 @@
 
 <head>
   <meta charset="utf-8">
-  <h1>Scratch</h1>
-
-  <title></title>
+  <h1>When I say Web you say Development </h1>
+  <h2>Title </h2>  <input id="title" placeholder="untitled"/>
+  <a id="show" href="show.html" target="_blank">view my project </a>
+  <title>Web Dev Kiddos </title>
   <link href="index.css" rel="stylesheet"/>
   <script src="index.js"></script>
 </head>
@@ -15,7 +16,7 @@
 </div>
 
 <body>
-<script src="html_file_handler.js">
+<script>
   function allowDrop(ev) {
     ev.preventDefault();
 }
@@ -40,30 +41,50 @@ function drop(ev) {
     }
 }
   </script>
-  <a href="show.html" target="_blank">view my project </a>
-  <div id="tools">
-      <div id="div1" draggable="false">
-          <div draggable="true" ondragstart="drag(event)" class="no" id="drag1">
-            <span><h1> H1 </h1>
+
+  <div id="flexy">
+    <div id="tools">
+        <div id="div1" draggable="false">
+          <div draggable="true" ondragstart="drag(event)" class="no" id="h1">
+            <h1> H1 </h1>
             <input placeholder="your text"/>
           </div>
-
-          <div draggable="true" ondragstart="drag(event)" class="no" id="drag2">
-              <span>
+          <div draggable="true" ondragstart="drag(event)" class="no" id="h2">
+             
               <h1> H2 </h1>
               <input placeholder="your text"/>
-              </span>
-          </div>
-
-        <div draggable="true" ondragstart="drag(event)" id="drag3">
-           <span> <h1> H3 </h1>
+            </div>
+        <div draggable="true" ondragstart="drag(event)" id="h3" class="no">
+            <h1> H3 </h1>
             <input placeholder="your text"/>
-            </span>
           </div>
+        <div draggable="true" ondragstart="drag(event)" class="no" id="h4">
+          <h1> H4 </h1>
+          <input placeholder="your text"/>
+        </div>
+        <div draggable="true" ondragstart="drag(event)" class="no" id="h5">
+          <h1> H5 </h1>
+          <input placeholder="your text"/>
+        </div>
+        <div draggable="true" ondragstart="drag(event)" class="no" id="h6">
+          <h1> H6 </h1>
+          <input placeholder="your text"/>
+        </div>
+        <div draggable="true" ondragstart="drag(event)" class="no" id="img">
+          <h1> img </h1>
+          <input placeholder="your link from the internet"/>
+        </div>
+        <div draggable="true" ondragstart="drag(event)" class="no" id="p">
+          <h1> p </h1>
+          <input placeholder="your text"/>
+        </div>
       </div>
-  </div>
+    </div> 
   <div id="board" draggable="false" ondrop="drop(event)" ondragover="allowDrop(event)">
   </div>
+  </div>
+  
+
 </body>
 
 </html>

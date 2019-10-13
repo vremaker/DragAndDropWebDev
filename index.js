@@ -1,60 +1,19 @@
-/*(function() {
+(function () {
+
     window.addEventListener("load", init);
 
     function init() {
-      fillHTML();
-     fillBoard();
+      id("show").addEventListener("click", readDom);
+      //fillHTML();
+    // fillBoard();
       
     }
 
-    function fillBoard() {
-      let daddyBoard = document.createElement("div");
-      daddyBoard.id = "board";
-      //daddyBoard.onDrop = drop(event);
-      daddyBoard.ondragover = allowDrop(event);
-      qs("body").appendChild(daddyBoard);
-//<div id="board" ondrop="drop(event)" ondragover="allowDrop(event)">
-  //</div>
+    function readDom() {
+        console.log(id("board").childNodes);
+        writeHTML(id("board").childNodes, "show.html");
     }
 
-    function fillHTML() {
-      // p, h1, h2, h3, h4, h5, h6, a, img, br, ul, li
-      // ol, hr 
-      let holderDiv = document.createElement("div");
-      holderDiv.id = "holder_Div";
-     // holderDiv.ondrop = drop(event);
-      holderDiv.ondragover = allowDrop(event);
-      let h1 = document.createElement("div");
-      h1.id= "h1";
-      h1.classList.add("box");
-      let label1 = document.createElement("p");
-      let input1 = document.createElement("input");
-      label1.textContent = "h1";
-      input1.placeholder = "your text here";
-      h1.appendChild(label1);
-      h1.appendChild(input1);
-      h1.draggable =true;
-      h1.ondragstart=drag(event);
-      holderDiv.appendChild(h1);
-      id("tools").appendChild(holderDiv);
-    }
-
-    //<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
-    //</div>
-    function allowDrop(ev) {
-      ev.preventDefault();
-    }
-    
-    function drag(ev) {
-      ev.dataTransfer.setData("text", ev.target.id);
-    }
-    
-    /*function drop(ev) {
-      ev.preventDefault();
-      let data = ev.dataTransfer.getData("text");
-      ev.target.appendChild(document.getElementById(data));
-    }
-   
     function id(id) {
       return document.getElementById(id);
     }
@@ -66,4 +25,51 @@
     function qsa(id) {
       return document.querySelectorAll(id);
     }
-})  ()} */
+
+    function writeHTML(input_array, file_name) {
+        var text = "<html><head>";
+        text += "<title>" + document.getElementById("title").value +  "</title>";
+        text += "</head><body>";
+        var lists = true;
+
+        for (let i = 1; i < input_array.length; i++) {
+            if (input_array[i].id != "img") {
+                text += "<" + input_array[i].id + ">" + input_array[i].childNodes[3].value + "</" +
+                    input_array[i].id + ">";
+            }
+            else {
+                text += '<img src="' + input_array[i].childNodes[3].value + '"/>';
+            }
+        }
+
+        text += "</body></html>";
+
+
+        //The function to create a file needs the data so I'm going to implement it below this
+        //Data will be the String name we use for the creation of the new file
+
+
+        var file = new Blob([text], { type: "html" });
+        if (window.navigator.msSaveOrOpenBlob)
+            window.navigator.msSaveOrOpenBlob(file, file_name);
+        else {
+            var a = document.createElement("a"),
+                url = URL.createObjectURL(file);
+            a.href = url;
+            a.download = file_name;
+            document.body.appendChild(a);
+            a.click();
+            setTimeout(function () {
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+            }, 0);
+        }
+    }
+    function checkStatus(response) {
+      if (response.status >= 200 && response.status < 300 || response.status == 0) {
+        return response.text();
+      } else {
+        return Promise.reject(new Error(response.status + ": " + response.statusText));
+      }
+    }
+})  ()
