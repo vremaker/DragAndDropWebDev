@@ -1,4 +1,3 @@
-<!--Connor Shabro, Valerie Remaker, Padma Gundapaneni-->
-<?php
+<?php 
    unlink($_GET['file']);
 ?>
